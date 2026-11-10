@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: -1850490091848457590}
   - component: {fileID: -3737826062689880003}
   - component: {fileID: -5023827362440142580}
+  - component: {fileID: 4803419409246196639}
   m_Layer: 0
   m_Name: Glass_Prefab
-  m_TagString: Untagged
+  m_TagString: VasoVacio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,3 +182,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4803419409246196639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569955139220881749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3935eae62061d6439c116327be1c300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  audio: {fileID: 8300000, guid: 7a89349d1956a384f9769afbc57f58fe, type: 3}

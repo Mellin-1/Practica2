@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfe1e8b9bc97ed418b9fb48004ecb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStandPoint
+  index: 1
 --- !u!1 &282348019
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfe1e8b9bc97ed418b9fb48004ecb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  index: 0
 --- !u!212 &1156816810
 SpriteRenderer:
   serializedVersion: 3
@@ -663,6 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfe1e8b9bc97ed418b9fb48004ecb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStandPoint
+  index: 3
 --- !u!1 &1428927333
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfe1e8b9bc97ed418b9fb48004ecb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStandPoint
+  index: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
