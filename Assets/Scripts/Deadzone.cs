@@ -9,5 +9,11 @@ public class Deadzone : MonoBehaviour
         {
             Destroy(desliza.gameObject);
         }
+        NPC npc = collision.GetComponentInParent<NPC>();
+        if (npc != null)
+        {
+            Destroy(npc.gameObject);
+            GameManager.Instance.Muerte();
+        }
     }
 }
