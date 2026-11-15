@@ -12,5 +12,10 @@ public class RecogeClientes : MonoBehaviour
             GameManager.Instance.NPCEliminado();
             GameManager.Instance.SumaPuntos(2);
         }
+        Desliza desliza = collision.GetComponentInParent<Desliza>();
+        if (desliza != null)
+        {
+            Destroy(desliza.gameObject);
+        }
     }
 }
