@@ -1,18 +1,28 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
     private enum EstadoNPC
-    {EsperandoCerveza, CogiendoCerveza, Bebiendo}
+    {EsperandoCerveza, CogiendoCerveza, Bebiendo, Saliendo}
     private EstadoNPC estadoActual = EstadoNPC.EsperandoCerveza;
 
     [SerializeField] private GameObject prefabVaso;
-    [SerializeField] private float speed = 0.25f;
-    [SerializeField] private float retrocesoInSecs = 2f; 
+    [SerializeField] private float speed = 0.5f;
     [SerializeField] private float tiempoBebiendo = 1f;
+    [SerializeField] private float retrocesoInSecs = 2f;
+    private Vector3 posInicial; // guardamos la posicion inicial para evitar que salga de la barra mientras está cogiendo cerveza
+    private SpriteRenderer Renderer;
 
     private float temporizador = 0f;
 
+    private void Start()
+    {
+        posInicial = transform.position;
+        Renderer = gameObject.GetComponent<SpriteRenderer>();
+        if (GameManager.Instance != null)
+            GameManager.Instance.registrarCliente();
+    }
     void Update()
     {
         switch (estadoActual)
@@ -22,7 +32,9 @@ public class NPC : MonoBehaviour
                 break;
 
             case EstadoNPC.CogiendoCerveza:
-                transform.Translate(Vector3.left * (speed * 2f) * Time.deltaTime);
+
+                if (transform.position.x > posInicial.x)
+                    transform.Translate(Vector3.left * (2f * speed) * Time.deltaTime);
 
                 temporizador += Time.deltaTime;
                 if (temporizador >= retrocesoInSecs)
@@ -39,11 +51,17 @@ public class NPC : MonoBehaviour
                     if (prefabVaso != null)
                     {
                         Instantiate(prefabVaso, transform.position, Quaternion.identity);
+                        if (GameManager.Instance != null)
+                            GameManager.Instance.registrarCerveza();
                     }
 
                     temporizador = 0f;
-                    estadoActual = EstadoNPC.EsperandoCerveza;
+                    estadoActual = EstadoNPC.Saliendo;
                 }
+                break;
+            case EstadoNPC.Saliendo:
+                Renderer.flipX = true;
+                transform.Translate(Vector3.left * speed * Time.deltaTime);
                 break;
         }
     }
@@ -52,6 +70,8 @@ public class NPC : MonoBehaviour
     {
         if (estadoActual == EstadoNPC.EsperandoCerveza && collision.gameObject.CompareTag("Beer"))
         {
+            if (GameManager.Instance != null)
+                GameManager.Instance.eliminarCerveza();
             Destroy(collision.gameObject);
             temporizador = 0f;
             estadoActual = EstadoNPC.CogiendoCerveza; 

@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour
             BeerClone.GetComponent<Desliza>().setVel(-2);
             // aqui incluir una forma de esperar antes de desactivar el cooldown de usar (utilizando la variable int Cooldown)
             cd = false;
+            if (GameManager.Instance != null)
+                GameManager.Instance.registrarCerveza();
         }
     }
 }

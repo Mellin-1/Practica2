@@ -9,13 +9,11 @@ public class RecogeClientes : MonoBehaviour
         {
             // destruye al cliente 
             Destroy(npc.gameObject);
-            GameManager.Instance.NPCEliminado();
-            GameManager.Instance.SumaPuntos(2);
-        }
-        Desliza desliza = collision.GetComponentInParent<Desliza>();
-        if (desliza != null)
-        {
-            Destroy(desliza.gameObject);
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.NPCEliminado();
+                GameManager.Instance.SumaPuntos(2);
+            }
         }
     }
 }

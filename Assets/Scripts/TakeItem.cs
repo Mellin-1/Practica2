@@ -10,6 +10,11 @@ public class TakeItem : MonoBehaviour
         if (item && other.tag == "VasoVacio")
         {
             speaker.PlayOneShot(item.GetAudioClip());
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.eliminarCerveza();
+                GameManager.Instance.SumaPuntos(item.GetPoints());
+            }
             Destroy(item.gameObject);
         }
     }
